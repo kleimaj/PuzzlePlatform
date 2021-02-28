@@ -11,10 +11,23 @@ AMovingPlatform::AMovingPlatform()
 	SetMobility(EComponentMobility::Movable);
 }
 
+void AMovingPlatform::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// tells Server to communicate with Clients
+	if (HasAuthority())
+	{
+		SetReplicates(true);
+		SetReplicateMovement(true);
+	}
+}
+
 void AMovingPlatform::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
+	// Movement is calculated on server, sets client location
 	if (HasAuthority()) {
 		CurrentLocation = GetActorLocation();
 		//UE_LOG(LogTemp, Warning, TEXT("GetActorLocation = %s", *CurrentLocation.ToString()));

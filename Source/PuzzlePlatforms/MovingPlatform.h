@@ -19,6 +19,7 @@ public:
 
 protected:
 		virtual void Tick(float DeltaSeconds) override;
+		virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
