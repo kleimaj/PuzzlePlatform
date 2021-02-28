@@ -30,9 +30,9 @@ void AMovingPlatform::Tick(float DeltaSeconds)
 	// Movement is calculated on server, sets client location
 	if (HasAuthority()) {
 		CurrentLocation = GetActorLocation();
-		//UE_LOG(LogTemp, Warning, TEXT("GetActorLocation = %s", *CurrentLocation.ToString()));
-		CurrentLocation.X -= MovementSpeed * DeltaSeconds;
-		//UE_LOG(LogTemp, Warning, TEXT("CurrentLocation = %s", *CurrentLocation.ToString()));
-		SetActorLocation(CurrentLocation);
+		FVector GlobalTargetLocation = GetTransform().TransformPosition(TargetLocation);
+		//CurrentLocation.X -= MovementSpeed * DeltaSeconds;
+		FVector Direction = (GlobalTargetLocation - CurrentLocation).GetSafeNormal();
+		SetActorLocation(CurrentLocation + Direction * MovementSpeed * DeltaSeconds);
 	}
 }

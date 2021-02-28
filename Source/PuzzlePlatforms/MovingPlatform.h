@@ -25,6 +25,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float MovementSpeed = 5.f;
 	
+	UPROPERTY(EditAnywhere, Meta=(MakeEditWidget = true))
+	FVector TargetLocation;
+
 	FVector CurrentLocation;
 
 	
