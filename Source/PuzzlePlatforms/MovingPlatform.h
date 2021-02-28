@@ -16,11 +16,13 @@ class PUZZLEPLATFORMS_API AMovingPlatform : public AStaticMeshActor
 
 public:
 		AMovingPlatform();
+
+protected:
 		virtual void Tick(float DeltaSeconds) override;
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
-	float MovementSpeed = 500.f;
+	float MovementSpeed = 5.f;
 	
 	FVector CurrentLocation;
 

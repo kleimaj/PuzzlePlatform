@@ -13,9 +13,11 @@ AMovingPlatform::AMovingPlatform()
 
 void AMovingPlatform::Tick(float DeltaSeconds)
 {
+	Super::Tick(DeltaSeconds);
+
 	CurrentLocation = GetActorLocation();
-	UE_LOG(LogTemp, Warning, TEXT("GetActorLocation = %s", *CurrentLocation.ToString()));
+	//UE_LOG(LogTemp, Warning, TEXT("GetActorLocation = %s", *CurrentLocation.ToString()));
 	CurrentLocation.X -= MovementSpeed * DeltaSeconds;
-	UE_LOG(LogTemp, Warning, TEXT("CurrentLocation = %s", *CurrentLocation.ToString()));
+	//UE_LOG(LogTemp, Warning, TEXT("CurrentLocation = %s", *CurrentLocation.ToString()));
 	SetActorLocation(CurrentLocation);
 }
