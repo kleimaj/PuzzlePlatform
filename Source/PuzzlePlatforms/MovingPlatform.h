@@ -21,6 +21,8 @@ public:
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float MovementSpeed = 500.f;
+	
+	FVector CurrentLocation;
 
 	
 };
